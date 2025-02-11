@@ -3,8 +3,8 @@
 import React, { useState, useEffect } from 'react';
 import Envelope from "../components/Envelope.jsx";
 import "./heart.css"
-import { Heading1 } from 'lucide-react';
 import TextAnimation from '../components/TextAnimation.jsx';
+import LocalVideo from '../components/LocalVideo.jsx';
 
 let amount = 60;
 
@@ -13,6 +13,7 @@ export default function Home() {
   const [isOpen, setIsOpen] = useState(false);
   const [isYes, setIsYes] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
+  const [VideoStart, setVideoStart] = useState(false);
 
   const openEnvelope = () => {
       setIsOpen(true);
@@ -35,6 +36,10 @@ export default function Home() {
     setIsMounted(true);
   },[])
 
+  useEffect(()=>{
+    console.log(VideoStart);
+  },[VideoStart]);
+
   if(!isMounted){
       return null;
   }
@@ -44,8 +49,8 @@ export default function Home() {
       <Envelope isOpen={isOpen} setIsYes={setIsYes} isYes={isYes}> </Envelope>
     </div>
     {(isYes && isOpen) ? Hearts : <></>}
-    <TextAnimation trigger = {isYes} />
-
+    <TextAnimation trigger = {isYes} setVideoStart = {setVideoStart}/>
+    <LocalVideo VideoStart={VideoStart} />
     </>
   );
 }

@@ -11,17 +11,19 @@ const TextAnimation = (props) => {
     const [index, setIndex] = useState(0);
     
     useEffect(() => {
-        console.log(props.trigger);
         if(!props.trigger){
             setIndex(0);
         }
         else{
             const interval = setInterval(() => {
-                setIndex((prevIndex) => (prevIndex + 1));
+                setIndex((prevIndex) => {
+                    if(prevIndex>=3){
+                        props.setVideoStart(true);
+                        clearInterval(interval);
+                    }
+                    return (prevIndex + 1);
+            });
             }, 4000);
-            if(index>=2){
-                clearInterval(interval);
-            }
             return () => clearInterval(interval);
         }
     }, [props.trigger]);

@@ -1,0 +1,49 @@
+/* Hide the video container initially */
+.video-container {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+  }
+  
+  /* When .show is added, fade in */
+  .video-container.show {
+    display: flex;
+    opacity: 1;
+    animation: fadeIn 0.5s ease-in-out forwards;
+  }
+  
+  /* When .show is removed, fade out */
+  .video-container:not(.show) {
+    animation: fadeOut 0.5s ease-in-out forwards;
+  }
+  
+  /* Keyframes for fade-in animation */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  /* Keyframes for fade-out animation */
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+  
+  /* Style the video */
+  video {
+    max-width: 100%;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  
