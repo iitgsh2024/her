@@ -51,7 +51,7 @@ body {
 }
 .message p{
   position : absolute;
-  font-size: 1.9rem;
+  font-size: 1.7rem;
   top : 10%;
 }
 .message .options{
